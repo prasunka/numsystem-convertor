@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -39,6 +40,20 @@ std::string binarytoDecimal(std::string str){
     return std::to_string(dec);
 }
 
+std::string decimaltoBinary(std::string str){
+    long long int dec = std::stoll(str);
+    std::string binary="";
+    int i = 0;
+    
+    if (dec == 0) return "0";
+    while(dec!=0){
+        int rem = dec%2;
+        binary += std::to_string(rem);
+        dec /= 2;
+    }
+    std::reverse(binary.begin(),binary.end());
+    return binary;
+}
 int main(){
     std::cout << checkBinary("111000111") << std::endl;
     std::cout << checkDecimal("1431100A111") << std::endl;
@@ -50,4 +65,9 @@ int main(){
     std::cout << binarytoDecimal("0") << std::endl;
     std::cout << binarytoDecimal("1") << std::endl;
     std::cout << binarytoDecimal("0000111111111111111111111111100000000000000000000000000000010") << std::endl;
+
+    std::cout << decimaltoBinary("4") << std::endl;
+    std::cout << decimaltoBinary("64") << std::endl;
+    std::cout << decimaltoBinary("0") << std::endl;
+    std::cout << decimaltoBinary("10000000000000000") << std::endl;
 }
