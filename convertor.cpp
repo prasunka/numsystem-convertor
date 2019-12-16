@@ -1,3 +1,4 @@
+#include <unordered_map>
 #include <algorithm>
 #include <iostream>
 #include <string>
@@ -32,6 +33,18 @@ bool checkHex(std::string str){
     return true;
 }
 
+std::unordered_map<std::string, char> umap; 
+
+std::string binarytoOctal(std::string str){
+    std::string octal = "";
+    str = std::string((3 - str.size()%3)%3,'0') + str;
+    for(int i = 0; i < str.size(); i+=3){
+        std::string tmp = str.substr(i,3);
+        octal += umap["0"+tmp];
+    }
+    return octal;
+}
+
 std::string binarytoDecimal(std::string str){
     long long int dec = 0;
     for(int i = 0; i < str.size(); ++i){
@@ -54,7 +67,27 @@ std::string decimaltoBinary(std::string str){
     std::reverse(binary.begin(),binary.end());
     return binary;
 }
+
+
 int main(){
+    umap["0000"] = '0'; 
+    umap["0001"] = '1'; 
+    umap["0010"] = '2'; 
+    umap["0011"] = '3'; 
+    umap["0100"] = '4'; 
+    umap["0101"] = '5'; 
+    umap["0110"] = '6'; 
+    umap["0111"] = '7'; 
+    umap["1000"] = '8'; 
+    umap["1001"] = '9'; 
+    umap["1010"] = 'A'; 
+    umap["1011"] = 'B'; 
+    umap["1100"] = 'C'; 
+    umap["1101"] = 'D'; 
+    umap["1110"] = 'E'; 
+    umap["1111"] = 'F';
+
+
     std::cout << checkBinary("111000111") << std::endl;
     std::cout << checkDecimal("1431100A111") << std::endl;
     std::cout << checkOctal("11100758111") << std::endl;
@@ -70,4 +103,8 @@ int main(){
     std::cout << decimaltoBinary("64") << std::endl;
     std::cout << decimaltoBinary("0") << std::endl;
     std::cout << decimaltoBinary("10000000000000000") << std::endl;
+
+    std::cout << binarytoOctal("0") << std::endl;
+    std::cout << binarytoOctal("100110101010110101011110110") << std::endl;
+    std::cout << binarytoOctal("110110101011") << std::endl;
 }
