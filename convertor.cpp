@@ -95,6 +95,23 @@ std::string binarytoHex(std::string str){
     return hex;
 }
 
+std::string hextoBinary(std::string str){
+    std::string binary = "";
+    std::unordered_map<std::string,char>::iterator itr;
+    for(int i = 0; i < str.size(); ++i){
+        std::string bits = "";
+        for(itr = umap.begin(); itr!=umap.end(); ++itr){
+            char entry = itr->second;
+            if(str[i] == entry){
+                bits = itr->first.substr(0);
+                break;
+            }
+        }
+        binary += bits;
+    }
+    return binary;
+}
+
 int main(){
     umap["0000"] = '0'; 
     umap["0001"] = '1'; 
@@ -141,4 +158,8 @@ int main(){
     std::cout << binarytoHex("0") << std::endl;
     std::cout << binarytoHex("100110101010110101011110110") << std::endl;
     std::cout << binarytoHex("1101101010111010101001010101001") << std::endl;
+
+    std::cout << hextoBinary("0") << std::endl;
+    std::cout << hextoBinary("7456132147563201") << std::endl;
+    std::cout << hextoBinary("210345621ABACDABCDEDC12787") << std::endl;
 }
