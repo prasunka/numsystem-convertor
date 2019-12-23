@@ -45,6 +45,23 @@ std::string binarytoOctal(std::string str){
     return octal;
 }
 
+std::string octaltoBinary(std::string str){
+    std::string binary = "";
+    std::unordered_map<std::string,char>::iterator itr;
+    for(int i = 0; i < str.size(); ++i){
+        std::string bits = "";
+        for(itr = umap.begin(); itr!=umap.end(); ++itr){
+            char entry = itr->second;
+            if(str[i] == entry){
+                bits = itr->first.substr(1);
+                break;
+            }
+        }
+        binary += bits;
+    }
+    return binary;
+}
+
 std::string binarytoDecimal(std::string str){
     long long int dec = 0;
     for(int i = 0; i < str.size(); ++i){
@@ -107,4 +124,8 @@ int main(){
     std::cout << binarytoOctal("0") << std::endl;
     std::cout << binarytoOctal("100110101010110101011110110") << std::endl;
     std::cout << binarytoOctal("110110101011") << std::endl;
+    
+    std::cout << octaltoBinary("0") << std::endl;
+    std::cout << octaltoBinary("7456132147563201") << std::endl;
+    std::cout << octaltoBinary("210345621") << std::endl;
 }
