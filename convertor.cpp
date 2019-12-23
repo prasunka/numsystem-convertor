@@ -85,6 +85,15 @@ std::string decimaltoBinary(std::string str){
     return binary;
 }
 
+std::string binarytoHex(std::string str){
+    std::string hex = "";
+    str = std::string((4 - str.size()%4)%4,'0') + str;
+    for(int i = 0; i < str.size(); i+=4){
+        std::string tmp = str.substr(i,4);
+        hex += umap[tmp];
+    }
+    return hex;
+}
 
 int main(){
     umap["0000"] = '0'; 
@@ -128,4 +137,8 @@ int main(){
     std::cout << octaltoBinary("0") << std::endl;
     std::cout << octaltoBinary("7456132147563201") << std::endl;
     std::cout << octaltoBinary("210345621") << std::endl;
+
+    std::cout << binarytoHex("0") << std::endl;
+    std::cout << binarytoHex("100110101010110101011110110") << std::endl;
+    std::cout << binarytoHex("1101101010111010101001010101001") << std::endl;
 }
