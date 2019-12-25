@@ -1,38 +1,77 @@
 #include <iostream>
+#include <algorithm>
 #include "convertor.h"
 
-int main(){
+std::vector<std::string> modes = {"-b2o","-b2d","-b2h","-o2b","-o2d","-o2h","-d2b","-d2o","-d2h","-h2b","-h2o","-h2d"};
+
+void show_usage(std::string name){
+    std::cerr << "Usage: " << name << " <option(s)> SOURCES"
+              << "Options:\n"
+              << "\t-h,--help\t\tShow this help message\n"
+              << "\t-d,--destination DESTINATION\tSpecify the destination path"
+              << std::endl;
+}
+
+
+
+int main(int argc, char **argv){
     init();
     
-    std::cout << checkBinary("111000111") << std::endl;
-    std::cout << checkDecimal("1431100A111") << std::endl;
-    std::cout << checkOctal("11100758111") << std::endl;
-    std::cout << checkHex("11100BCD25MFA111") << std::endl;
-    std::cout << checkDecimal("-111006464694111") << std::endl;
+    if (argc < 3) {
+        show_usage(argv[0]);
+        return 1;
+    }
+    bool filemode = false;
+    std::string mode = "";
+    std::string input = "";
+    std::string infile = "";
+    std::string outfile = "";
 
-    std::cout << binarytoDecimal("11001") << std::endl;
-    std::cout << binarytoDecimal("0") << std::endl;
-    std::cout << binarytoDecimal("1") << std::endl;
-    std::cout << binarytoDecimal("0000111111111111111111111111100000000000000000000000000000010") << std::endl;
+    for (int i = 1; i < argc; ++i) {
+        std::string arg = argv[i];
+        if ((arg == "-h") || (arg == "--help")) {
+            show_usage(argv[0]);
+            return 0;
+        } 
+        
+        if(std::find(modes.begin(),modes.end(),arg) != modes.end()){
+            mode = arg;
+            if(i + 1 < argc){
+                if(argv[i+1][0]!='-')
+                    input = argv[++i];
+            }
+            else {
+                show_usage(argv[0]);
+                return 1;
+            }
+        }
 
-    std::cout << decimaltoBinary("4") << std::endl;
-    std::cout << decimaltoBinary("64") << std::endl;
-    std::cout << decimaltoBinary("0") << std::endl;
-    std::cout << decimaltoBinary("10000000000000000") << std::endl;
+        else if ((arg == "-f") || (arg == "--file")) {
+            filemode = true;
+            if (i + 1 < argc) {   
+                infile = argv[++i];   
+            } else { 
+                  std::cerr << "--file option requires one argument." << std::endl;
+                return 1;
+            }  
+        }
 
-    std::cout << binarytoOctal("0") << std::endl;
-    std::cout << binarytoOctal("100110101010110101011110110") << std::endl;
-    std::cout << binarytoOctal("110110101011") << std::endl;
+        else if ((arg == "-o") || (arg == "--out")) {
+            if (i + 1 < argc) {   
+                outfile = argv[++i];   
+            } else { 
+                  std::cerr << "--out option requires one argument." << std::endl;
+                return 1;
+            }  
+
+        } 
+        else {
+            show_usage(argv[0]);
+            return 1;
+        }
+    }
+
+    std::cout << "successfully parsed :)" << std::endl;
     
-    std::cout << octaltoBinary("0") << std::endl;
-    std::cout << octaltoBinary("7456132147563201") << std::endl;
-    std::cout << octaltoBinary("210345621") << std::endl;
-
-    std::cout << binarytoHex("0") << std::endl;
-    std::cout << binarytoHex("100110101010110101011110110") << std::endl;
-    std::cout << binarytoHex("1101101010111010101001010101001") << std::endl;
-
-    std::cout << hextoBinary("0") << std::endl;
-    std::cout << hextoBinary("7456132147563201") << std::endl;
-    std::cout << hextoBinary("210345621ABACDABCDEDC12787") << std::endl;
+    return 0;
 }
