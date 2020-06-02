@@ -1,3 +1,6 @@
+#ifndef CONVERTOR_H
+#define CONVERTOR_H
+
 #include <unordered_map>
 #include <algorithm>
 #include <string>
@@ -17,3 +20,5 @@ std::string binarytoHex(std::string str);
 std::string octaltoBinary(std::string str);
 std::string decimaltoBinary(std::string str);
 std::string hextoBinary(std::string str);
+
+#endif
