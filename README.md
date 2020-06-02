@@ -10,9 +10,11 @@ A C++ tool to convert between number systems.
 > git clone https://github.com/prasunka/numsystem-convertor numsys-conv
 * Build using make
 > cd numsys-conv
+>
 > make
 * Usage:
 > ./nsysconv <mode> INPUT <option(s)> PATH
+>
 > Modes:
 >         -h,--help       Show this help message
 > 
@@ -28,12 +30,16 @@ A C++ tool to convert between number systems.
 >         -h2b            Hexadecimal to Binary
 >         -h2o            Hexadecimal to Octal
 >         -h2d            Hexadecimal to Decimal
+>
 > Options:
+>
 >         -f,--file PATH  Specify the path of input file
+>
 >         -o,--out PATH   Specify the path of output file
 
 * A simple example:
 > ./nsysconv -b2d 1010
+>
 > Output: 10
 
 ## License
