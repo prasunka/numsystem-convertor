@@ -38,9 +38,12 @@ A C++ tool to convert between number systems.
 >         -o,--out PATH   Specify the path of output file
 
 * A simple example:
-> ./nsysconv -b2d 1010
->
-> Output: 10
+        
+        ./nsysconv -b2d 1010
+        Output: 10
+
+### To-do:
+* Add file support
 
 ## License
 <big> MIT License </big>
