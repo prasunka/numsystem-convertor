@@ -4,7 +4,7 @@
 
 std::vector<std::string> modes = {"-b2o","-b2d","-b2h","-o2b","-o2d","-o2h","-d2b","-d2o","-d2h","-h2b","-h2o","-h2d"};
 
-void show_usage(std::string name){
+void show_usage(const std::string &name){
     std::cerr << "Usage: " << name << " <mode> INPUT <option(s)> PATH\n"
               << "Modes:\n"
               << "\t-h,--help\tShow this help message\n"
@@ -26,7 +26,7 @@ void show_usage(std::string name){
               << std::endl;
 }
 
-std::string convert(std::string input, std::string mode){
+std::string convert(const std::string &input, const std::string &mode){
     if(mode == "-b2o"){
             if(!checkBinary(input)){
                 std::cerr << "Invalid input!" << std::endl;
@@ -150,8 +150,8 @@ int main(int argc, char **argv){
     bool filemode = false;
     std::string mode = "";
     std::string input = "";
-    std::string infile = "";
-    std::string outfile = "";
+    //std::string infile = "";
+    //std::string outfile = "";
 
     for (int i = 1; i < argc; ++i) {
         std::string arg = argv[i];
@@ -175,7 +175,7 @@ int main(int argc, char **argv){
         else if ((arg == "-f") || (arg == "--file")) {
             filemode = true;
             if (i + 1 < argc) {   
-                infile = argv[++i];   
+                //infile = argv[++i];   
             } else { 
                   std::cerr << "--file option requires one argument." << std::endl;
                 return 1;
@@ -184,7 +184,7 @@ int main(int argc, char **argv){
 
         else if ((arg == "-o") || (arg == "--out")) {
             if (i + 1 < argc) {   
-                outfile = argv[++i];   
+                //outfile = argv[++i];   
             } else { 
                   std::cerr << "--out option requires one argument." << std::endl;
                 return 1;
