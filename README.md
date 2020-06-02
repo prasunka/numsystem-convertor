@@ -10,15 +10,16 @@ A C++ tool to convert between number systems.
 
 -   Clone this repository
 
->  git clone https://github.com/prasunka/numsystem-convertor numsys-conv
+>  git clone <https://github.com/prasunka/numsystem-convertor> numsys-conv
 
 -   Build using make
-    > cd numsys-conv
+    >cd numsys-conv
     >
-    > make
+    >make
+
 -   Usage:
 
-    > ./nsysconv  INPUT \ PATH
+    >./nsysconv  INPUT \ PATH
     >
     > Modes:
     >         \-h,--help       Show this help message
@@ -47,7 +48,7 @@ A C++ tool to convert between number systems.
          ./nsysconv -b2d 1010
          Output: 10
 
-### To-do:
+### To-do
 
 -   Add file support
 
