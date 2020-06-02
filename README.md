@@ -4,6 +4,8 @@
 
 A C++ tool to convert between number systems.
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/547da5e57bd747439c5171a61a52190f)](https://www.codacy.com/manual/prasun.code/numsystem-convertor?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=prasunka/numsystem-convertor&amp;utm_campaign=Badge_Grade)
+
 ## Usage
 
 ### Building from source
