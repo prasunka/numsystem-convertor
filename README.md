@@ -1,5 +1,7 @@
 # numsystem-convertor
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d6a032937aa54053b54a71cbc8c7226f)](https://app.codacy.com/manual/prasun.code/numsystem-convertor?utm_source=github.com&utm_medium=referral&utm_content=prasunka/numsystem-convertor&utm_campaign=Badge_Grade_Dashboard)
+
 ## Overview
 
 A C++ tool to convert between number systems.
